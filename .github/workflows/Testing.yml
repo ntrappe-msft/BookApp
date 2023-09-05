@@ -1,0 +1,26 @@
+name: Testing Code base
+
+# Run tests on pushes to developer branches
+on:
+  push:
+    branches-ignore:
+      - main
+
+  # Can also be triggered manually on GitHub Actions
+  workflow_dispatch:
+
+jobs:
+  run-tests:
+    name: Run Jest Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Run Jest
+        run: |
+          rm -rf node_modules   # Remove existing dependencies
+          npm i                 # Install dependencies
+          npm i --save-dev jest # Install Jest dependencies
+          npm test
