@@ -63,6 +63,18 @@ npm run dev
   - Edge calls this "Device Toolbar"
 - Select a mobile device to view the app
 
+### Testing
+
+- All tests should be added to the folder `testing/`. They can include Javascript or Typescript tests
+- There is an example test `sum.test.js` in the folder
+- To run all tests locally, use the following command:
+
+```ruby
+npm test
+```
+
+- Tests will also be run on _all_ pushes to developer branches (i.e. not `main`)
+
 ### Git Cheat Sheet
 
 #### Branches
