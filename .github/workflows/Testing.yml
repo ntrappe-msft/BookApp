@@ -18,9 +18,11 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
 
-      - name: Run Jest
+      - name: Run Cypress
         run: |
-          rm -rf node_modules   # Remove existing dependencies
-          npm i                 # Install dependencies
-          npm i --save-dev jest # Install Jest dependencies
-          npm test
+          rm -rf node_modules           # Remove existing dependencies
+          npm i                         # Install dependencies
+          npm i typescript --save-dev   # Install TypeScript for Cypress
+          npm i cypress --save-dev      # Install Cypress dependencies
+          npm i @types/jest --save-dev  # More for testing
+          npx cypress run --component   # Run component tests
