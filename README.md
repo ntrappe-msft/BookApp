@@ -92,6 +92,7 @@ npx cypress open
 ```javascript
 // run COMPONENT tests via CLI
 npx cypress run --component
+// run E2E tests via CLI
 npx cypress run --e2e
 ```
 
