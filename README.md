@@ -1,20 +1,20 @@
 # BookApp
 
-#### [🚀 Find the App Here](https://ntrappe-msft.github.io/BookApp/)
+### [🚀 Find the App Here](https://ntrappe-msft.github.io/BookApp/)
 
-### Quick Commands
+## Quick Commands
 
 - To install Node.js: `npm install`
 - To start up a development server: `npm run dev`
 - To run tests: `npm test`
 
-### Getting Started
+## Getting Started
 
-#### Prerequisites
+### Prerequisites
 
 - [Download Visual Studio Code](https://code.visualstudio.com/download) if you don't already have it
 
-#### Step 1: Clone the Repository
+### Step 1: Clone the Repository
 
 - Use the git command to clone the repo to your machine:
 
@@ -22,19 +22,19 @@
 git clone https://github.com/ntrappe-msft/BookApp.git
 ```
 
-#### Step 2: Install Prettier
+### Step 2: Install Prettier
 
 - Open Visual Studio Code
 - Go to Extensions (`ctrl + shift + X` or `cmd + shift + X`) and search for "Prettier"
 - Install it
 
-#### Step 3: Configuration
+### Step 3: Configuration
 
 - Open the Command Palette (`ctrl + shift + P` or `cmd + shift + P`)
 - Search for "Format on Save" and enable it
 - Now, Prettier will auto-format your code when saved
 
-#### Step 4: Dependencies
+### Step 4: Dependencies
 
 - In the Visual Studio Code terminal, run the following to install Node.js dependencies:
 
@@ -45,7 +45,7 @@ npm install
 - This will create or update a folder called `node_modules/`
 - The `.gitignore` file should ensure that `node_modules/` is never committed or pushed to GitHub, however, it's always good practice to double-check which files are being committed each time
 
-#### Step 5: Start the Local Server
+### Step 5: Start the Local Server
 
 - In the Visual Studio Code terminal, run the following to start up a development server:
 
@@ -56,7 +56,7 @@ npm run dev
 - It will return a URL, such as `http://localhost:5174`
 - You can open _another_ terminal if you want to use that to run commands but leave the terminal hosting the server running
 
-#### Step 6: View the Application
+### Step 6: View the Application
 
 - Paste the URL from Step 5 into your browser to see the rendered app
 - Open Developer Tools then open the responsive design mode
@@ -65,44 +65,38 @@ npm run dev
   - Edge calls this "Device Toolbar"
 - Select a mobile device to view the app
 
-### Testing
+## Testing
 
-- All tests should be added to the folder `testing/`. They can include Javascript or Typescript tests
-- There is an example test `sum.test.js` in the folder
-- To run all tests locally, use the following command:
+- Testing is done with Cypress. If you don't know what this is, check out their [Component Testing Guide](https://docs.cypress.io/guides/component-testing/overview)
+- All tests verifying components should be added to the folder `cypress/component`. **(This is applicable for most people)**
+- All tests verifying control and communication should be added to the folder `cypress/e2e`
+- There is an example test in each folder that you can copy.
+- If you have questions or doubts, check out our [Testing Guide](https://github.com/ntrappe-msft/BookApp/wiki/Testing-Guide)
 
-```ruby
-npm test
+### Testing Locally
+
+- Cypress offers testing both via command-line or UI. With the UI, you can actually see what's being tested on the app.
+- You need to specify if you're testing component or e2e tests
+
+```javascript
+// install dependencies if you haven't already
+npm i cypress --save-dev
+npm i @types/jest --save-dev
 ```
 
-- Tests will also be run on _all_ pushes to developer branches (i.e. not `main`)
+```javascript
+// run tests via UI
+npx cypress open
+```
 
-### Git Cheat Sheet
+```javascript
+// run COMPONENT tests via CLI
+npx cypress run --component
+npx cypress run --e2e
+```
 
-#### Branches
+### Testing via GitHub Actions
 
-- Create a new branch: `git checkout -b <new branch name>`
+- Tests will run on _all_ pushes to developer branches (i.e. not `main`)
+- You can go into GitHub Actions and re-run any tests manually
 
-#### Adding Files
-
-- Add all files: `git add .`
-- Add files of a type (e.g., c++): `git add *.cpp`
-- Add specific files: `git add <path to file>`
-- See which files you've added: `git status`
-
-#### Committing Files
-
-- Commit files: `git commit -m <commit message>`
-- Undo the latest commit: `git reset --soft HEAD~1`
-- List the commit IDs _(first is most recent)_: `git log`
-- See which files were just committed: `git show <recent commit ID> --name-only`
-
-#### Pushing Files
-
-- Push committed file(s) to a branch: `git push origin <destination branch>`
-
-#### Managing Changes
-
-- Reset branch to most recent commit: `git reset --hard HEAD`
-- Pull the latest changes: `git pull origin <branch-name>`
-- Save your changes: `git stash`
