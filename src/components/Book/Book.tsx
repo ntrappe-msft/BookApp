@@ -1,10 +1,19 @@
-import { GetWords } from './BookHelpers';
+/**
+ * This file creates the Book component. It displays a book cover, description,
+ * reviews, and more. The user can interact with it to add the book to a shelf,
+ * change settings, add reviews, etc. 
+ * Note: This component just displays data and offers interactions, it isn't
+ * aware of anything beyond itself so it must be feed info.
+ * Author(s): Nicole Trappe
+ * Date: September 04, 2023 
+ */
+
+import { GetStars } from "./BookHelpers";
 
 function Book() {
     return (
         <>
             <p id="book-text">Hello World</p>
-            <p id="fxn-test"><GetWords /></p>
         </>
     )
 }
