@@ -8,14 +8,16 @@
 - To start up a development server: `npm run dev`
 - To run tests: `npx cypress open`
 
-## Contributions
+## Developer Space
 
 ### Guides
 
 - [Testing Guide: Cypress](https://github.com/ntrappe-msft/BookApp/wiki/Testing-Guide)
 - [Style Guide: React](https://github.com/ntrappe-msft/BookApp/wiki/Style-Guide)
+- [System Architecture/Design](https://github.com/ntrappe-msft/BookApp/wiki/System-Design)
+- [Git Cheatsheet](https://github.com/ntrappe-msft/BookApp/wiki/Git-Cheatsheet)
 
-### Work
+### Assignments
 
 - Take a look at our [Issues](https://github.com/ntrappe-msft/BookApp/issues) to find something you want to work on
 - Each component or piece of architecture is its own Issue
