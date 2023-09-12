@@ -11,7 +11,7 @@ on:
 
 jobs:
   run-tests:
-    name: Run Jest Tests
+    name: Run Cypress Tests
     runs-on: ubuntu-latest
 
     steps:
