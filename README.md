@@ -19,11 +19,9 @@
 
 - Take a look at our [Issues](https://github.com/ntrappe-msft/BookApp/issues) to find something you want to work on
 - Each component or piece of architecture is its own Issue
-  - Each has a label for priority (**`P0`: Must Have**, **`P1: Want to Have`**, **`P2: Would Like to Have`**)
-  - Each has a mock-up or wireframe to follow
-  - Each has a template of functionality
-  - Adding tests to `cypress/component` are option but highly recommended
+- Each is labeled by priority, contains a mock-up, and has a template
 - Assign an Issue to yourself if you'd like to work on it
+- Adding tests to `cypress/component` are option but highly recommended
 
 ## Getting Started
 
