@@ -11,4 +11,5 @@
     display: flex;
     flex-direction: column;
     background-color: var(--nearly-black);
+    max-width: 30em;
 }

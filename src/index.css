@@ -11,8 +11,7 @@ body {
     height: 100%;
     min-width: 320px;
     min-height: 100vh;
-    background-color: blue;
-    color: cyan;
+    background-color: white;
 }
   
 main {
@@ -20,7 +19,8 @@ main {
     flex-direction: column; */
     width: inherit;
     height: inherit;
-    background-color: blueviolet;
+    background-color: var(--nearly-black);
+    min-width: 300px;
 }
   
 h1 {
@@ -69,6 +69,13 @@ p, div {
 * {
     margin: 0;
     padding: 0;
+}
+
+@media (min-width: 30em) {
+    main {
+        width: 29em;
+        margin: 0 auto;
+    }
 }
   
 /* Custom fonts */
