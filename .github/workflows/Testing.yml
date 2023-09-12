@@ -25,4 +25,6 @@ jobs:
           npm i typescript --save-dev   # Install TypeScript for Cypress
           npm i cypress --save-dev      # Install Cypress dependencies
           npm i @types/jest --save-dev  # More for testing
+          npm i @testing-library/react --save-dev       # To render
+          npm i @testing-library/jest-dom --save-dev    # To render
           npx cypress run --component   # Run component tests

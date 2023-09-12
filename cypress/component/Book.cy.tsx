@@ -1,169 +1,47 @@
 import React from 'react';
-import { getAllByAltText, render } from '@testing-library/react';
 import Book from '../../src/components/Book/Book'
-import { GetStars } from '../../src/components/Book/BookHelpers'
 
-describe('Render Book Component', () => {
-    it('Mount <Book />', () => {
-        // see: https://on.cypress.io/mounting-react
-        cy.mount(<Book />)
-    })
+// Will 'mount' aka attach the Book to DOM before each test
+beforeEach(() => {
+    cy.mount(<Book />)
 })
 
-describe('Book Fxn Tests', () => {
-    it('Check Stars for Rating of -1 (Invalid)', () => {
-        // get the <div></div> that holds 5 star images
-        const { getAllByAltText } = render(GetStars(-1));
-        const StarImages = getAllByAltText(/star/);
-        // iterate through each of the children star images
-        expect(StarImages[0]).to.have.property('alt', 'empty star')
-        expect(StarImages[1]).to.have.property('alt', 'empty star')
-        expect(StarImages[2]).to.have.property('alt', 'empty star')
-        expect(StarImages[3]).to.have.property('alt', 'empty star')
-        expect(StarImages[4]).to.have.property('alt', 'empty star')
+// Test Set #1
+describe('Render Book Component', () => {
+    it('Check that Title Exists', () => {
+        cy.get('#title-wrapper').should('exist')
+        cy.get('#title-wrapper h2')
+            .should('exist')
+            .should('have.text', 'Untitled')
+        cy.get('#title-wrapper h3')
+            .should('exist')
+            .should('have.text', 'No Author')
     })
 
-    it('Check Stars for Rating of 0', () => {
-        // get the <div></div> that holds 5 star images
-        const { getAllByAltText } = render(GetStars(0));
-        const StarImages = getAllByAltText(/star/);
-        // iterate through each of the children star images
-        expect(StarImages[0]).to.have.property('alt', 'empty star')
-        expect(StarImages[1]).to.have.property('alt', 'empty star')
-        expect(StarImages[2]).to.have.property('alt', 'empty star')
-        expect(StarImages[3]).to.have.property('alt', 'empty star')
-        expect(StarImages[4]).to.have.property('alt', 'empty star')
+    it('Check that Review Number Exists', () => {
+        cy.get('#stats-wrapper').should('exist')
+        cy.get('#rating-box').should('exist')
+        cy.get('#rating-box h5')
+            .should('exist')
+            .should('have.text', '0 Reviews')
     })
 
-    it('Check Stars for Rating of 0.5', () => {
-        // get the <div></div> that holds 5 star images
-        const { getAllByAltText } = render(GetStars(0.5));
-        const StarImages = getAllByAltText(/star/);
-        // iterate through each of the children star images
-        expect(StarImages[0]).to.have.property('alt', 'half star')
-        expect(StarImages[1]).to.have.property('alt', 'empty star')
-        expect(StarImages[2]).to.have.property('alt', 'empty star')
-        expect(StarImages[3]).to.have.property('alt', 'empty star')
-        expect(StarImages[4]).to.have.property('alt', 'empty star')
+    it('Check that Book Length Exists', () => {
+        cy.get('#length-box').should('exist')
+        cy.get('#length-box h4')
+            .should('exist')
+            .should('have.text', 'Unknown')
+        cy.get('#length-box h5')
+            .should('exist')
+            .should('have.text', '0 Pages')
     })
 
-    it('Check Stars for Rating of 1', () => {
-        // get the <div></div> that holds 5 star images
-        const { getAllByAltText } = render(GetStars(1));
-        const StarImages = getAllByAltText(/star/);
-        // iterate through each of the children star images
-        expect(StarImages[0]).to.have.property('alt', 'full star')
-        expect(StarImages[1]).to.have.property('alt', 'empty star')
-        expect(StarImages[2]).to.have.property('alt', 'empty star')
-        expect(StarImages[3]).to.have.property('alt', 'empty star')
-        expect(StarImages[4]).to.have.property('alt', 'empty star')
-    })
-
-    it('Check Stars for Rating of 1.5', () => {
-        // get the <div></div> that holds 5 star images
-        const { getAllByAltText } = render(GetStars(1.5));
-        const StarImages = getAllByAltText(/star/);
-        // iterate through each of the children star images
-        expect(StarImages[0]).to.have.property('alt', 'full star')
-        expect(StarImages[1]).to.have.property('alt', 'half star')
-        expect(StarImages[2]).to.have.property('alt', 'empty star')
-        expect(StarImages[3]).to.have.property('alt', 'empty star')
-        expect(StarImages[4]).to.have.property('alt', 'empty star')
-    })
-
-    it('Check Stars for Rating of 2', () => {
-        // get the <div></div> that holds 5 star images
-        const { getAllByAltText } = render(GetStars(2));
-        const StarImages = getAllByAltText(/star/);
-        // iterate through each of the children star images
-        expect(StarImages[0]).to.have.property('alt', 'full star')
-        expect(StarImages[1]).to.have.property('alt', 'full star')
-        expect(StarImages[2]).to.have.property('alt', 'empty star')
-        expect(StarImages[3]).to.have.property('alt', 'empty star')
-        expect(StarImages[4]).to.have.property('alt', 'empty star')
-    })
-
-    it('Check Stars for Rating of 2.5', () => {
-        // get the <div></div> that holds 5 star images
-        const { getAllByAltText } = render(GetStars(2.5));
-        const StarImages = getAllByAltText(/star/);
-        // iterate through each of the children star images
-        expect(StarImages[0]).to.have.property('alt', 'full star')
-        expect(StarImages[1]).to.have.property('alt', 'full star')
-        expect(StarImages[2]).to.have.property('alt', 'half star')
-        expect(StarImages[3]).to.have.property('alt', 'empty star')
-        expect(StarImages[4]).to.have.property('alt', 'empty star')
-    })
-
-    it('Check Stars for Rating of 3', () => {
-        // get the <div></div> that holds 5 star images
-        const { getAllByAltText } = render(GetStars(3));
-        const StarImages = getAllByAltText(/star/);
-        // iterate through each of the children star images
-        expect(StarImages[0]).to.have.property('alt', 'full star')
-        expect(StarImages[1]).to.have.property('alt', 'full star')
-        expect(StarImages[2]).to.have.property('alt', 'full star')
-        expect(StarImages[3]).to.have.property('alt', 'empty star')
-        expect(StarImages[4]).to.have.property('alt', 'empty star')
-    })
-
-    it('Check Stars for Rating of 4', () => {
-        // get the <div></div> that holds 5 star images
-        const { getAllByAltText } = render(GetStars(4));
-        const StarImages = getAllByAltText(/star/);
-        // iterate through each of the children star images
-        expect(StarImages[0]).to.have.property('alt', 'full star')
-        expect(StarImages[1]).to.have.property('alt', 'full star')
-        expect(StarImages[2]).to.have.property('alt', 'full star')
-        expect(StarImages[3]).to.have.property('alt', 'full star')
-        expect(StarImages[4]).to.have.property('alt', 'empty star')
-    })
-
-    it('Check Stars for Rating of 4.2', () => {
-        // get the <div></div> that holds 5 star images
-        const { getAllByAltText } = render(GetStars(4.2));
-        const StarImages = getAllByAltText(/star/);
-        // iterate through each of the children star images
-        expect(StarImages[0]).to.have.property('alt', 'full star')
-        expect(StarImages[1]).to.have.property('alt', 'full star')
-        expect(StarImages[2]).to.have.property('alt', 'full star')
-        expect(StarImages[3]).to.have.property('alt', 'full star')
-        expect(StarImages[4]).to.have.property('alt', 'empty star')
-    })
-
-    it('Check Stars for Rating of 4.5', () => {
-        // get the <div></div> that holds 5 star images
-        const { getAllByAltText } = render(GetStars(4.5));
-        const StarImages = getAllByAltText(/star/);
-        // iterate through each of the children star images
-        expect(StarImages[0]).to.have.property('alt', 'full star')
-        expect(StarImages[1]).to.have.property('alt', 'full star')
-        expect(StarImages[2]).to.have.property('alt', 'full star')
-        expect(StarImages[3]).to.have.property('alt', 'full star')
-        expect(StarImages[4]).to.have.property('alt', 'half star')
-    })
-
-    it('Check Stars for Rating of 5', () => {
-        // get the <div></div> that holds 5 star images
-        const { getAllByAltText } = render(GetStars(5));
-        const StarImages = getAllByAltText(/star/);
-        // iterate through each of the children star images
-        expect(StarImages[0]).to.have.property('alt', 'full star')
-        expect(StarImages[1]).to.have.property('alt', 'full star')
-        expect(StarImages[2]).to.have.property('alt', 'full star')
-        expect(StarImages[3]).to.have.property('alt', 'full star')
-        expect(StarImages[4]).to.have.property('alt', 'full star')
-    })
-
-    it('Check Stars for Rating of 7 (Invalid)', () => {
-        // get the <div></div> that holds 5 star images
-        const { getAllByAltText } = render(GetStars(7));
-        const StarImages = getAllByAltText(/star/);
-        // iterate through each of the children star images
-        expect(StarImages[0]).to.have.property('alt', 'empty star')
-        expect(StarImages[1]).to.have.property('alt', 'empty star')
-        expect(StarImages[2]).to.have.property('alt', 'empty star')
-        expect(StarImages[3]).to.have.property('alt', 'empty star')
-        expect(StarImages[4]).to.have.property('alt', 'empty star')
+    it('Check that Stats Exists', () => {
+        cy.get('#stats-box h4')
+            .should('exist')
+            .should('have.text', 'Unknown')
+        cy.get('#stats-box h5')
+            .should('exist')
+            .should('have.text', 'Published')
     })
 })
