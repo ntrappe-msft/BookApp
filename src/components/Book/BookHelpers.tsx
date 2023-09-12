@@ -2,6 +2,14 @@ import fillStarPath from '../../assets/star-fill.png';
 import emptyStarPath from '../../assets/star-empty.png';
 import halfStarPath from '../../assets/half-star.png';
 
+const LONGEST_BOOK = 4000000;
+const SHORT = 40001;
+const MED = 85001;
+const LONG = 150001;
+const WORDS = 0;
+const PAGES = 1;
+// const HOURS = 2;
+
 /**
  * Based on the rating, will return an element with 5 stars (images)
  * that correspond to it (will only show empty, half, and full)
@@ -41,4 +49,29 @@ export function getStars(rating: number): JSX.Element {
     }
     console.log(Stars)
     return <div className="stars">{Stars}</div>;
+}
+
+export function setLength(words: number): string {
+    if (words < 1 || words > LONGEST_BOOK) {
+        console.warn('ERROR: ' + words + ' is an invalid length of book.')
+        return 'Unknown';
+    } else if (words < SHORT) {
+        return 'Short';
+    } else if (words < MED) {
+        return 'Medium';
+    } else if (words < LONG) {
+        return 'Long';
+    } else {
+        return 'Giant';
+    }
+}
+
+export function getLengthMetric(words: number, opt: number): string {
+    if (opt === WORDS) {
+        return `${words} Words`;
+    } else if (opt === PAGES) {
+        return `${Math.round(words/275)} Pages`
+    } else {
+        return 'idk';
+    }
 }
