@@ -1,0 +1,70 @@
+/* Styles just used by the Book component */
+
+#cover-wrapper {
+    display: flex;
+    /* height: fit-content;
+    border: 1px solid red; */
+    justify-content: center;
+}
+
+#cover-wrapper img {
+    width: 50%;
+    height: auto;
+    border-radius: 0.8em;
+}
+
+#title-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--gap-200);
+}
+#title-wrapper h2 {
+    margin-bottom: var(--gap-100);
+}
+#title-wrapper h2,
+#title-wrapper h3 {
+    text-align: center;
+}
+
+#stats-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin-top: var(--gap-200);
+    justify-content: space-between;
+}
+#stats-wrapper > div {
+    text-align: center;
+}
+#stats-wrapper div:first-child {
+    text-align: left;
+}
+#stats-wrapper div:last-child {
+    text-align: right;
+}
+#stats-wrapper h5 {
+    margin-top: var(--gap-100);
+}
+
+#synopsis-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--gap-200);
+    text-align: justify;
+    line-height: 1.4em;
+    cursor: pointer;
+}
+
+#synopsis-wrapper p b {
+    color: var(--grey-300);
+}
+
+#reviews-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--gap-200);
+}
+
+
+.star {
+    width: 1em; /* change so not hard coded later */
+}

@@ -1,0 +1,14 @@
+/* Styles shared among top-level components
+ * - Define main layout, headers, and footers
+ * - Global typography and font styles
+ * - Page background colors
+ * - CSS global variables
+ * - Design how components fit on screen
+*/
+
+#book-wrapper {
+    padding: 1.6em;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--nearly-black);
+}
