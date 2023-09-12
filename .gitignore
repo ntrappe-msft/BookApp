@@ -27,7 +27,7 @@ dist-ssr
 .eslintrc.cjs
 cypress.config.ts
 package-lock.json
-package.json
+# package.json
 tsconfig.json
 tsconfig.node.json
 vite.config.ts
