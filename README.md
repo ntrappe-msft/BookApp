@@ -29,6 +29,7 @@
 
 ### Prerequisites
 
+- Install `Node.js` (aka `npm`). I recommend [Homebrew](https://brew.sh) for Mac and [Chocolately](https://community.chocolatey.org/packages/nodejs.install) for Windows.
 - [Download Visual Studio Code](https://code.visualstudio.com/download) if you don't already have it
 
 ### Step 1: Clone the Repository
