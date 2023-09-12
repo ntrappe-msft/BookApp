@@ -1,0 +1,30 @@
+name: Testing Code base
+
+# Run tests on pushes to developer branches
+on:
+  push:
+    branches-ignore:
+      - main
+
+  # Can also be triggered manually on GitHub Actions
+  workflow_dispatch:
+
+jobs:
+  run-tests:
+    name: Run Jest Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Run Cypress
+        run: |
+          rm -rf node_modules             # Remove existing dependencies
+          npm i                           # Install dependencies
+          npm i typescript --save-dev     # Install TypeScript for Cypress
+          npm i cypress --save-dev        # Install Cypress dependencies
+          npm i @types/jest --save-dev    # More for testing
+          npm i @testing-library/react --save-dev       # To render
+          npm i @testing-library/jest-dom --save-dev    # To render
+          npx cypress run --component     # Run component tests
