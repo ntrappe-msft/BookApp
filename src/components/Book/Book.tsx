@@ -8,12 +8,16 @@
  * Date: September 04, 2023 
  */
 
-import { getStars, setLength, getLengthMetric } from "./BookHelpers";
-import blankCover from '../../assets/blank-cover.png';
+import { useState } from 'react';
+import { getStars, setLength, getLengthMetric, setSynopsis } from './BookHelpers';
+import { DEFAULT_SYNOPSIS, DEFAULT_COVER, DEFAULT_AUTHOR, DEFAULT_TITLE } from './BookHelpers';
+import { DEFAULT_DATE, DEFAULT_REVIEWS } from './BookHelpers';
+import './Book.css';
 
 /**
  * Creates the HTML skeleton of the Book component and sets defaults like
  * an empty book cover, filler description, no ratings, etc.
+ * @param {string} cover - Path to cover photo
  * @param {string} title - Name of the book
  * @param {string} author - Name of the author
  * @param {number} rating - Score of book between 0 and 5
@@ -24,18 +28,25 @@ import blankCover from '../../assets/blank-cover.png';
  * @returns {JSX.Element} - A React element for a Book.
  */
 function Book({
-    title = 'Untitled',
-    author = 'No Author',
+    cover = DEFAULT_COVER,
+    title = DEFAULT_TITLE,
+    author = DEFAULT_AUTHOR,
     rating = 0,
     numReviews = 0,
     words = 0,
-    published = 'Unknown',
-    synopsis = 'No description provided.'
+    published = DEFAULT_DATE,
+    synopsis = DEFAULT_SYNOPSIS
 }) {
+    const [PreviewSynopsis, setPreviewSynopsis] = useState(true);
+
+    const toggleSynopsis = () => {
+        setPreviewSynopsis(!PreviewSynopsis)
+    }
+
     return (
         <>
             <div id="cover-wrapper">
-                <img src={blankCover} alt="No bookcover found"/>
+                <img src={cover} alt="No bookcover found"/>
             </div>
             <div id="title-wrapper">
                 <h2>{title}</h2>
@@ -55,8 +66,10 @@ function Book({
                     <h5>Published</h5>
                 </div>
             </div>
-            <p id="synopsis-wrapper">{synopsis}</p>
-            <div id="reviews-wrapper">Reviews Wrapper</div>
+            <div id="synopsis-wrapper" onClick={toggleSynopsis}>
+                {setSynopsis(synopsis, PreviewSynopsis)}
+            </div>
+            <div id="reviews-wrapper">{DEFAULT_REVIEWS}</div>
         </>
     );
 }
