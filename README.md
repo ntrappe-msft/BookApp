@@ -62,6 +62,11 @@ npm install
 
 - This will create or update a folder called `node_modules/`
 - The `.gitignore` file should ensure that `node_modules/` is never committed or pushed to GitHub, however, it's always good practice to double-check which files are being committed each time
+- You can also run the following to ensure that all dependencies have been found
+
+```ruby
+npm run setup
+```
 
 ### Step 5: Start the Local Server
 
