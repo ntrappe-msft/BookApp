@@ -14,7 +14,7 @@ function App() {
         // This is an example of how we create a Book component and attach to to index.html via App.tsx
         <span id="book-wrapper">
             <Book
-                cover={'/src/assets/Yellowface.png'}
+                cover={'/assets/Yellowface.png'}
                 title={"Yellowface"}
                 author={"R. F. Kuang"}
                 rating={3.3}
