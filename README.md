@@ -1,6 +1,6 @@
 # BookApp
 
-### [🚀 Find the App Here](https://ntrappe-msft.github.io/BookApp/)
+### [🚀 Find the App Here](https://bookify-msft.netlify.app) 
 
 ## Quick Commands
 
