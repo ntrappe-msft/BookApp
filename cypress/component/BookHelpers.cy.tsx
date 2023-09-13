@@ -1,5 +1,6 @@
 import { render } from '@testing-library/react';
-import { getStars, setSynopsis, DEFAULT_SYNOPSIS } from '../../src/components/Book/BookHelpers'
+import { getStars, setSynopsis, setReviewNum } from '../../src/components/Book/BookHelpers'
+import { DEFAULT_SYNOPSIS } from '../../src/components/Book/BookHelpers'
 
 const SHORT_SYNOPSIS = 'Yo this is like a short description';
 const LONG_SYNOPSIS = `In Harry Potter and the Sorcerer's Stone, Harry, an orphan, lives with the 
@@ -213,5 +214,79 @@ describe('Test Synopsis Setting', () => {
         expect(synopsis.props.children[2].props.children).to.include('Read More')
         expect(synopsis.props.children[2].props.children).to.not.include('Read Less')
         expect(synopsis.props.children[0]).to.not.include('Hagrid')
+    })
+})
+
+describe ('Test Review Number Setting', () => {
+    it('0 should be No Reviews', () => {
+        assert(setReviewNum(0), 'No Reviews', '0 --> No Reviews')
+    })
+
+    it('1 should be 1 Review', () => {
+        assert(setReviewNum(1), '1 Review', '1 --> 1 Review')
+    })
+
+    it('2 should be 2 Reviews', () => {
+        assert(setReviewNum(2), '2 Reviews', '# --> # Reviews')
+    })
+
+    it('331 should be 331 Reviews', () => {
+        assert(setReviewNum(331), '331 Reviews', '# --> # Reviews')
+    })
+
+    it('999 should be 999 Reviews', () => {
+        assert(setReviewNum(999), '999 Reviews', '# --> # Reviews')
+    })
+
+    it('1000 should be 1K Reviews', () => {
+        assert(setReviewNum(1000), '1K Reviews', '# --> nK Reviews')
+    })
+
+    it('1100 should be 1.1K Reviews', () => {
+        assert(setReviewNum(1100), '1.1K Reviews', '# --> nK Reviews')
+    })
+
+    it('1500 should be 1.5K Reviews', () => {
+        assert(setReviewNum(1500), '1.5K Reviews', '# --> nK Reviews')
+    })
+
+    it('2900 should be 2.9K Reviews', () => {
+        assert(setReviewNum(2900), '2.9K Reviews', '# --> nK Reviews')
+    })
+
+    it('9999 should be 9.9K Reviews', () => {
+        assert(setReviewNum(9999), '9.9K Reviews', '# --> nK Reviews')
+    })
+
+    it('10,000 should be 10K Reviews', () => {
+        assert(setReviewNum(10000), '10K Reviews', '# --> nK Reviews')
+    })
+
+    it('10,500 should be 10K Reviews', () => {
+        assert(setReviewNum(10500), '10K Reviews', '# --> nK Reviews')
+    })
+
+    it('999,999 should be 999K Reviews', () => {
+        assert(setReviewNum(999999), '999K Reviews', '# --> nK Reviews')
+    })
+
+    it('1,000,000 should be 1M Reviews', () => {
+        assert(setReviewNum(1000000), '1M Reviews', '# --> nK Reviews')
+    })
+
+    it('1,345,000 should be 1.3M Reviews', () => {
+        assert(setReviewNum(1345000), '1.3M Reviews', '# --> nK Reviews')
+    })
+
+    it('7,045,222 should be 7M Reviews', () => {
+        assert(setReviewNum(7045222), '7M Reviews', '# --> nK Reviews')
+    })
+
+    it('9,999,999 should be 9.9M Reviews', () => {
+        assert(setReviewNum(9999999), '9.9M Reviews', '# --> nK Reviews')
+    })
+
+    it('3,222,333,444 should be 3B Reviews', () => {
+        assert(setReviewNum(3222333444), '3B Reviews', '# --> nK Reviews')
     })
 })

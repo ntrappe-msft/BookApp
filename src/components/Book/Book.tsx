@@ -10,6 +10,7 @@
 
 import { useState } from 'react';
 import { getStars, setLength, getLengthMetric, setSynopsis } from './BookHelpers';
+import { setReviewNum } from './BookHelpers';
 import { DEFAULT_SYNOPSIS, DEFAULT_COVER, DEFAULT_AUTHOR, DEFAULT_TITLE } from './BookHelpers';
 import { DEFAULT_DATE, DEFAULT_REVIEWS } from './BookHelpers';
 import './Book.css';
@@ -55,7 +56,7 @@ function Book({
             <div id="stats-wrapper">
                 <div id="rating-box">
                     {getStars(rating)}
-                    <h5>{numReviews} Reviews</h5>
+                    <h5>{setReviewNum(numReviews)}</h5>
                 </div>
                 <div id="length-box">
                     <h4>{setLength(words)}</h4>
