@@ -9,7 +9,7 @@ const MED = 85001;
 const LONG = 150001;
 const WORDS = 0;
 const PAGES = 1;
-const PREVIEW_LEN = 275;
+const PREVIEW_LEN = 300;    // # of characters to show in synopsis preview
 const SPACE = ' ';
 const HUNDRED = 100;
 const THOUSAND = 1000;
@@ -19,7 +19,6 @@ const BILLION = 1000000000;
 
 // Exported Globals
 export const DEFAULT_SYNOPSIS = 'No description provided.';
-export const DEFAULT_COVER = '/src/assets/blank-cover.png';
 export const DEFAULT_AUTHOR = 'No Author';
 export const DEFAULT_TITLE = 'Untitled';
 export const DEFAULT_DATE = 'Unknown';
@@ -33,7 +32,6 @@ export const DEFAULT_REVIEWS = 'No reviews found.';
  */
 export function getStars(rating: number): JSX.Element {
     console.clear()
-    console.log('rating of ' + rating)
     const MAX_STARS = 5;                // max star rating
     const HALF_STAR = 0.5;              // 0.5 rating = 1/2 filled star
     let Stars: JSX.Element[] = [];      // set of stars
@@ -51,18 +49,15 @@ export function getStars(rating: number): JSX.Element {
             if (rating >= 1) {
                 rating -= 1;
                 Stars.push(<img key={i} className="star" src={fillStarPath} alt="full star"/>);
-                console.log('add full star')
             } else if (rating >= HALF_STAR) {
                 rating -= HALF_STAR;
                 Stars.push(<img key={i} className="star" src={halfStarPath} alt="half star"/>);
-                console.log('add half star')
             } else {
                 Stars.push(<img key={i} className="star" src={emptyStarPath} alt="empty star"/>);
-                console.log('add empty star')
             }
         }
     }
-    console.log(Stars)
+
     return <div className="stars">{Stars}</div>;
 }
 
@@ -77,7 +72,6 @@ export function getStars(rating: number): JSX.Element {
 export function setSynopsis(synopsis: string, PreviewSynopsis: boolean): JSX.Element {
     // Default (no synopsis given) or too short
     if (synopsis == DEFAULT_SYNOPSIS || (synopsis.length <= PREVIEW_LEN)) {
-        console.log('old synopsis: ', <p>{synopsis}</p>)
         return (<>{synopsis}</>);
     }
     // We can cut down synopsis depending on if PreviewSynopsis is true
@@ -93,7 +87,6 @@ export function setSynopsis(synopsis: string, PreviewSynopsis: boolean): JSX.Ele
         if (lastChar == SPACE) {
             preview = preview.slice(0, PREVIEW_LEN - 1);
         }
-        console.log('new synopsis: ', <p>{preview}... <b>Read More.</b></p>)
         return (
             <p>{preview}... <b>Read More.</b></p>
         )

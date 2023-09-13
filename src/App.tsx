@@ -8,13 +8,14 @@
 
 import './App.css'
 import Book from './components/Book/Book';
+import Yellowface from './assets/Yellowface.png';
 
 function App() {
     return (
         // This is an example of how we create a Book component and attach to to index.html via App.tsx
         <span id="book-wrapper">
             <Book
-                cover={'../../assets/Yellowface.png'}
+                cover={Yellowface}
                 title={"Yellowface"}
                 author={"R. F. Kuang"}
                 rating={3.3}

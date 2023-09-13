@@ -11,14 +11,15 @@
 import { useState } from 'react';
 import { getStars, setLength, getLengthMetric, setSynopsis } from './BookHelpers';
 import { setReviewNum } from './BookHelpers';
-import { DEFAULT_SYNOPSIS, DEFAULT_COVER, DEFAULT_AUTHOR, DEFAULT_TITLE } from './BookHelpers';
+import { DEFAULT_SYNOPSIS, DEFAULT_AUTHOR, DEFAULT_TITLE } from './BookHelpers';
 import { DEFAULT_DATE, DEFAULT_REVIEWS } from './BookHelpers';
+import DEFAULT_COVER from '../../assets/blank-cover.png';
 import './Book.css';
 
 /**
  * Creates the HTML skeleton of the Book component and sets defaults like
  * an empty book cover, filler description, no ratings, etc.
- * @param {string} cover - Path to cover photo
+ * @param {object} cover - Path to cover photo
  * @param {string} title - Name of the book
  * @param {string} author - Name of the author
  * @param {number} rating - Score of book between 0 and 5
