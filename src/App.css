@@ -24,3 +24,11 @@
     max-width: 30em;
     margin-bottom: 1.5em;
 }
+
+#fake-home {
+    background-color: blue;
+}
+
+#fake-page {
+    background-color: red;
+}

@@ -8,8 +8,7 @@ function BookPreview({
     cover = DEFAULT_COVER,
     title = DEFAULT_TITLE,
     author = DEFAULT_AUTHOR,
-    readers = 0,
-    tags = []
+    readers = 0
 }) {
     return (
         <>

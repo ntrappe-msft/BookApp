@@ -22,6 +22,10 @@ main {
     background-color: var(--nearly-black);
     min-width: 300px;
 }
+
+ul {
+    list-style: none;
+}
   
 * {
     margin: 0;
