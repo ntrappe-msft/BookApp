@@ -19,6 +19,11 @@ async function getBooksByAuthor(author) {
     return fetchData(url);
 }
 
+async function search(query) {
+    const url = `https://api2.isbndb.com/books/${query}`;
+    return fetchData(url);
+}
+
 async function fetchData(url){
     const headers = {
         "Content-Type": 'application/json',
@@ -35,5 +40,6 @@ async function fetchData(url){
 module.exports = {
     getBooksByTitle,
     getBookByISBN,
-    getBooksByAuthor
+    getBooksByAuthor,
+    search
 };

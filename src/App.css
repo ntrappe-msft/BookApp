@@ -24,3 +24,24 @@
     max-width: 30em;
     margin-bottom: 1.5em;
 }
+
+.search-bar-wrapper {
+    display: flex;
+    flex-direction: row;
+    border-radius: 0.7em;
+    background-color: var(--asphalt);
+    margin: 1.2em;
+    padding: 1em;
+    max-width: 30em;
+    margin-bottom: 1.5em;
+    align-items: center; /* For vertical centering */
+    justify-content: center; /* For horizontal centering */
+}
+
+.search-bar-wrapper input {
+    flex: 1; /* Take full width of the container */
+    border: none;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    outline: none; /* Remove default focus outline */
+}
