@@ -10,7 +10,7 @@
 
 import { useState } from 'react';
 import { getStars, setLength, getLengthMetric, setSynopsis } from './BookHelpers';
-import { setReviewNum } from './BookHelpers';
+import { setReviewNum, setTitle } from './BookHelpers';
 import { DEFAULT_SYNOPSIS, DEFAULT_AUTHOR, DEFAULT_TITLE } from './BookHelpers';
 import { DEFAULT_DATE, DEFAULT_REVIEWS } from './BookHelpers';
 import DEFAULT_COVER from '../../assets/blank-cover.png';
@@ -51,7 +51,7 @@ function Book({
                 <img src={cover} alt="No bookcover found"/>
             </div>
             <div id="title-wrapper">
-                <h2>{title}</h2>
+                {setTitle(title)}
                 <h3 id="author-text">{author}</h3>
             </div>
             <div id="stats-wrapper">

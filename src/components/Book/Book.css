@@ -16,10 +16,10 @@
 #title-wrapper {
     display: flex;
     flex-direction: column;
-    margin-top: var(--gap-200);
+    margin-top: var(--gap-300);
 }
 #title-wrapper h2 {
-    margin-bottom: var(--gap-100);
+    margin-bottom: var(--gap-200);
 }
 #title-wrapper h2,
 #title-wrapper h3 {
@@ -29,16 +29,19 @@
 #stats-wrapper {
     display: flex;
     flex-direction: row;
-    margin-top: var(--gap-200);
+    margin-top: var(--gap-300);
     justify-content: space-between;
 }
 #stats-wrapper > div {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-#stats-wrapper div:first-child {
+#stats-wrapper:first-child {
     text-align: left;
 }
-#stats-wrapper div:last-child {
+#stats-box:last-child {
     text-align: right;
 }
 #stats-wrapper h5 {
@@ -48,7 +51,7 @@
 #synopsis-wrapper {
     display: flex;
     flex-direction: column;
-    margin-top: var(--gap-200);
+    margin-top: var(--gap-300);
     text-align: justify;
     line-height: 1.4em;
     cursor: pointer;
@@ -61,10 +64,53 @@
 #reviews-wrapper {
     display: flex;
     flex-direction: column;
-    margin-top: var(--gap-200);
+    margin-top: var(--gap-300);
 }
-
 
 .star {
     width: 1em; /* change so not hard coded later */
+}
+
+h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+}
+  
+h2 {
+    font-family: 'SF Pro';
+    font-weight: 600;
+    font-size: 1.5em;
+    line-height: 1.1;
+    color: var(--grey-200);
+}
+  
+h3 {
+    font-family: 'SF Compact';
+    font-weight: 300;
+    line-height: 1.1; 
+    color: var(--grey-500);
+}
+  
+h4 {
+    font-family: 'SF Compact';
+    font-weight: 400;
+    color: var(--grey-400);
+}
+  
+h5 {
+    font-family: 'SF Compact';
+    font-weight: 200;
+    color: var(--grey-600);
+}
+  
+p, div {
+    font-family: 'SF Compact';
+    font-weight: 300;
+    line-height: 1.4;
+    font-size: 1.1em;
+    color: var(--grey-500);
+}
+  
+h3, h4, h5 {
+    font-size: 1em;
 }

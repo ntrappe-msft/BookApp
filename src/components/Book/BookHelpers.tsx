@@ -16,6 +16,8 @@ const THOUSAND = 1000;
 const TEN_THOUSAND = 10000;
 const MILLION = 1000000;
 const BILLION = 1000000000;
+const SHORT_TITLE = 30;
+const LONG_TITLE = 60;
 
 // Exported Globals
 export const DEFAULT_SYNOPSIS = 'No description provided.';
@@ -152,3 +154,19 @@ export function getLengthMetric(words: number, opt: number): string {
         return 'idk';
     }
 }
+
+export function setTitle(title: string): JSX.Element {
+    if ((title == DEFAULT_TITLE) || (title.length < SHORT_TITLE)) {
+        return (<h2>{title}</h2>);
+    } else if (title.length < LONG_TITLE) {
+        return (<h2 className='med title'>{title}</h2>);
+    } else {
+        return (<h2 className='long title'>{title}</h2>);
+    }
+}
+
+
+// <div id="title-wrapper">
+//                 <h2>{title}</h2>
+//                 <h3 id="author-text">{author}</h3>
+//             </div>
