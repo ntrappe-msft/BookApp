@@ -47,6 +47,9 @@ function Book({
 
     return (
         <>
+            <div id="collapse-wrapper">
+                <button id="collapse-btn"></button>
+            </div>
             <div id="cover-wrapper">
                 <img src={cover} alt="No bookcover found"/>
             </div>

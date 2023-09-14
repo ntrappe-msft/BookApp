@@ -110,3 +110,7 @@ p {
     font-size: 1em;
     color: var(--grey-500);
 }
+
+b {
+    color: var(--grey-400)
+}
