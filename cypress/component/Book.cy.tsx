@@ -111,6 +111,6 @@ describe('Render Half Filled Book Component', () => {
         cy.get('#rating-box').should('exist')
         cy.get('#rating-box h5')
             .should('exist')
-            .should('have.text', '124678 Reviews')
+            .should('have.text', '124K Reviews')
     })
 })

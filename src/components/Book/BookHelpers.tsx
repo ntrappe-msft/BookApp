@@ -9,12 +9,18 @@ const MED = 85001;
 const LONG = 150001;
 const WORDS = 0;
 const PAGES = 1;
-const PREVIEW_LEN = 275;
+const PREVIEW_LEN = 300;    // # of characters to show in synopsis preview
 const SPACE = ' ';
+const HUNDRED = 100;
+const THOUSAND = 1000;
+const TEN_THOUSAND = 10000;
+const MILLION = 1000000;
+const BILLION = 1000000000;
+const SHORT_TITLE = 30;
+const LONG_TITLE = 60;
 
 // Exported Globals
 export const DEFAULT_SYNOPSIS = 'No description provided.';
-export const DEFAULT_COVER = '/src/assets/blank-cover.png';
 export const DEFAULT_AUTHOR = 'No Author';
 export const DEFAULT_TITLE = 'Untitled';
 export const DEFAULT_DATE = 'Unknown';
@@ -28,7 +34,6 @@ export const DEFAULT_REVIEWS = 'No reviews found.';
  */
 export function getStars(rating: number): JSX.Element {
     console.clear()
-    console.log('rating of ' + rating)
     const MAX_STARS = 5;                // max star rating
     const HALF_STAR = 0.5;              // 0.5 rating = 1/2 filled star
     let Stars: JSX.Element[] = [];      // set of stars
@@ -46,18 +51,15 @@ export function getStars(rating: number): JSX.Element {
             if (rating >= 1) {
                 rating -= 1;
                 Stars.push(<img key={i} className="star" src={fillStarPath} alt="full star"/>);
-                console.log('add full star')
             } else if (rating >= HALF_STAR) {
                 rating -= HALF_STAR;
                 Stars.push(<img key={i} className="star" src={halfStarPath} alt="half star"/>);
-                console.log('add half star')
             } else {
                 Stars.push(<img key={i} className="star" src={emptyStarPath} alt="empty star"/>);
-                console.log('add empty star')
             }
         }
     }
-    console.log(Stars)
+
     return <div className="stars">{Stars}</div>;
 }
 
@@ -72,7 +74,6 @@ export function getStars(rating: number): JSX.Element {
 export function setSynopsis(synopsis: string, PreviewSynopsis: boolean): JSX.Element {
     // Default (no synopsis given) or too short
     if (synopsis == DEFAULT_SYNOPSIS || (synopsis.length <= PREVIEW_LEN)) {
-        console.log('old synopsis: ', <p>{synopsis}</p>)
         return (<>{synopsis}</>);
     }
     // We can cut down synopsis depending on if PreviewSynopsis is true
@@ -88,10 +89,44 @@ export function setSynopsis(synopsis: string, PreviewSynopsis: boolean): JSX.Ele
         if (lastChar == SPACE) {
             preview = preview.slice(0, PREVIEW_LEN - 1);
         }
-        console.log('new synopsis: ', <p>{preview}... <b>Read More.</b></p>)
         return (
             <p>{preview}... <b>Read More.</b></p>
         )
+    }
+}
+
+/**
+ * Takes in a number representing the number of reviews and shortens the number
+ * to 'K' (thousand), 'M' (million), 'B' (billion) to be more cohesive. If a number
+ * ends in 0, (e.g, 1.0K), the 0 is dropped (--> 1K).
+ * @param {number} numReviews - How many reviews we have for the book
+ * @returns {string} - Text displaying number of reviews
+ */
+export function setReviewNum(numReviews: number): string {
+    if (numReviews < 0) {
+        console.error('ERROR: Invalid number of reviews.');
+        return 'No Reviews';
+    } else if (numReviews == 1) {
+        return '1 Review';
+    } else if (numReviews < THOUSAND) {
+        return `${numReviews} Reviews`;
+    } else if (numReviews < TEN_THOUSAND) {
+        // 1000 --> 1K; 9999 --> 9.9K
+        const firstDigit = Math.trunc(numReviews / THOUSAND);
+        const secDigit = Math.trunc(numReviews / HUNDRED) - (firstDigit * 10);
+        return secDigit == 0 ? `${firstDigit}K Reviews` : `${firstDigit}.${secDigit}K Reviews`;
+    } else if (numReviews < MILLION) {
+        // 10,000 --> 10K; 999,999 --> 999K
+        const digits = Math.trunc(numReviews / THOUSAND);
+        return `${digits}K Reviews`;
+    } else if (numReviews < BILLION) {
+        // 1,000,000 --> 1M; 1,312,345 --> 1.3M
+        const firstDigit = Math.trunc(numReviews / MILLION);
+        const secDigit = Math.trunc(numReviews / TEN_THOUSAND) - (firstDigit * 10);
+        return secDigit == 0 ? `${firstDigit}M Reviews` : `${firstDigit}.${secDigit}M Reviews`;
+    } else {
+        const firstDigit = Math.trunc(numReviews / MILLION);
+        return `${firstDigit}B Reviews`;
     }
 }
 
@@ -119,3 +154,19 @@ export function getLengthMetric(words: number, opt: number): string {
         return 'idk';
     }
 }
+
+export function setTitle(title: string): JSX.Element {
+    if ((title == DEFAULT_TITLE) || (title.length < SHORT_TITLE)) {
+        return (<h2>{title}</h2>);
+    } else if (title.length < LONG_TITLE) {
+        return (<h2 className='med title'>{title}</h2>);
+    } else {
+        return (<h2 className='long title'>{title}</h2>);
+    }
+}
+
+
+// <div id="title-wrapper">
+//                 <h2>{title}</h2>
+//                 <h3 id="author-text">{author}</h3>
+//             </div>
