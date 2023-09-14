@@ -1,43 +1,17 @@
 const express = require('express');
+const cors = require('cors');
 const axios = require('axios');
-
+const { getBookByISBN, getBooksByTitle, getBooksByAuthor } = require('./utils');
 const app = express();
 const PORT = 3000;
 
+app.use(cors());  // This will enable all CORS (Cross-Origin Resource Sharing) requests from the web.
 
-const ISBN_API_KEY = '50541_39fc7079af846a2bdf1d948cce51f2b1' // 7 days trial API key for isbndb.com. Ends 9/20/2023
-
-async function getBookByISBN(isbn) {
-    const url = `https://api2.isbndb.com/book/${isbn}`;
-    const headers = {
-        "Content-Type": 'application/json',
-        "Authorization": ISBN_API_KEY
-    };
-    console.log("here");
-    try {
-        const response = await axios.get(url, { headers: headers });
-        return response.data;
-    } catch (error) {
-        throw error;
-    }
-}
-
-// async function getBooksByTitle(title) {
-//     const url = `https://api2.isbndb.com/book/${title}`;
-//     const headers = {
-//         "Content-Type": 'application/json',
-//         "Authorization": ISBN_API_KEY
-//     };
-//     console.log("here");
-//     try {
-//         const response = await axios.get(url, { headers: headers });
-//         return response.data;
-//     } catch (error) {
-//         throw error;
-//     }
-// }
-
-
+/**
+ * 
+ * API to retrieve book by ISBN.
+ * 
+ * */ 
 app.get('/getBookByISBN/:isbn', async (req, res) => {
     const { isbn } = req.params;
     try {
@@ -48,16 +22,39 @@ app.get('/getBookByISBN/:isbn', async (req, res) => {
     }
 });
 
-// app.get('/getBooksByTitle/:isbn', async (req, res) => {
-//     const { isbn } = req.params;
-//     req.bo
-//     try {
-//         const book = await getBooksByTitle(isbn);
-//         res.json(book);
-//     } catch (error) {
-//         res.status(500).json({ error: 'Failed to fetch book' });
-//     }
-// });
+/**
+ * 
+ * API to retrieve book based on title.
+ * By default maximum result per page is 20.
+ * 
+ * */ 
+app.get('/getBooksByTitle/:title', async (req, res) => {
+    const { title } = req.params;
+    
+    try {
+        const book = await getBooksByTitle(title);
+        res.json(book);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch books' });
+    }
+});
+
+/**
+ * 
+ * API to retrieve book based on author.
+ * By default maximum result per page is 20.
+ * 
+ * */ 
+app.get('/getBooksByAuthor/:author', async (req, res) => {
+    const { author } = req.params;
+    
+    try {
+        const book = await getBooksByAuthor(author);
+        res.json(book);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch books' });
+    }
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
