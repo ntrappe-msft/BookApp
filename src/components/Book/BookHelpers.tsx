@@ -14,6 +14,7 @@ const SPACE = ' ';
 const HUNDRED = 100;
 const THOUSAND = 1000;
 const TEN_THOUSAND = 10000;
+const HUN_THOUSAND = 100000;
 const MILLION = 1000000;
 const BILLION = 1000000000;
 const SHORT_TITLE = 30;
@@ -96,9 +97,33 @@ export function setSynopsis(synopsis: string, PreviewSynopsis: boolean): JSX.Ele
 }
 
 /**
+ * Truncates large numbers to their significant digits. If under 1000, don't modify.
+ * After that, reduce to sig figs. Example: 1000 --> 1K, 12000 --> 12K, 5000000 --> 5M.
+ * @param {number} num incoming number to convert
+ * @returns the new number as a string with a space after
+ */
+export function truncateNum(num: number): string {
+    if (num < THOUSAND) {
+        return `${num} `;
+    } else if (num < TEN_THOUSAND) {
+        const firstDigit = Math.trunc(num / THOUSAND);
+        const secondDigit = Math.trunc(num / HUNDRED) - (firstDigit * 10);
+        return secondDigit == 0? `${firstDigit}K ` : `${firstDigit}.${secondDigit}K `;
+    } else if (num < MILLION) {
+        const digits = Math.trunc(num / THOUSAND);  
+        return `${digits}K `;
+    } else if (num < BILLION) {
+        const firstDigit = Math.trunc(num / MILLION);
+        return `${firstDigit}M `;
+    } else {
+        const firstDigit = Math.trunc(num / MILLION);
+        return `${firstDigit}B `;
+    }
+}
+
+/**
  * Takes in a number representing the number of reviews and shortens the number
- * to 'K' (thousand), 'M' (million), 'B' (billion) to be more cohesive. If a number
- * ends in 0, (e.g, 1.0K), the 0 is dropped (--> 1K).
+ * to 'K' (thousand), 'M' (million), 'B' (billion) to be more cohesive.
  * @param {number} numReviews - How many reviews we have for the book
  * @returns {string} - Text displaying number of reviews
  */
@@ -110,23 +135,8 @@ export function setReviewNum(numReviews: number): string {
         return '1 Review';
     } else if (numReviews < THOUSAND) {
         return `${numReviews} Reviews`;
-    } else if (numReviews < TEN_THOUSAND) {
-        // 1000 --> 1K; 9999 --> 9.9K
-        const firstDigit = Math.trunc(numReviews / THOUSAND);
-        const secDigit = Math.trunc(numReviews / HUNDRED) - (firstDigit * 10);
-        return secDigit == 0 ? `${firstDigit}K Reviews` : `${firstDigit}.${secDigit}K Reviews`;
-    } else if (numReviews < MILLION) {
-        // 10,000 --> 10K; 999,999 --> 999K
-        const digits = Math.trunc(numReviews / THOUSAND);
-        return `${digits}K Reviews`;
-    } else if (numReviews < BILLION) {
-        // 1,000,000 --> 1M; 1,312,345 --> 1.3M
-        const firstDigit = Math.trunc(numReviews / MILLION);
-        const secDigit = Math.trunc(numReviews / TEN_THOUSAND) - (firstDigit * 10);
-        return secDigit == 0 ? `${firstDigit}M Reviews` : `${firstDigit}.${secDigit}M Reviews`;
     } else {
-        const firstDigit = Math.trunc(numReviews / MILLION);
-        return `${firstDigit}B Reviews`;
+        return `${truncateNum(numReviews)}Reviews`;
     }
 }
 

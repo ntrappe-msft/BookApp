@@ -16,10 +16,10 @@
 #title-wrapper {
     display: flex;
     flex-direction: column;
-    margin-top: var(--gap-300);
+    margin-top: var(--gap-400);
 }
 #title-wrapper h2 {
-    margin-bottom: var(--gap-200);
+    margin-bottom: var(--gap-250);
 }
 #title-wrapper h2,
 #title-wrapper h3 {
@@ -76,12 +76,22 @@ h1 {
     line-height: 1.1;
 }
   
-h2 {
+#title-wrapper h2 {
     font-family: 'SF Pro';
     font-weight: 600;
     font-size: 1.5em;
     line-height: 1.1;
+    word-wrap: break-word;
     color: var(--grey-200);
+    color: red;
+}
+#title-wrapper h2.med {
+    font-size: 1.35em;
+    color: orange;
+}
+#title-wrapper h2.long {
+    font-size: 1.2em;
+    color: yellow;
 }
   
 h3 {

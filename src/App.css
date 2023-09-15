@@ -15,14 +15,25 @@
 }
 
 #book-preview-wrapper {
-    display: flex;
-    flex-direction: row;
-    border-radius: 0.7em;
-    background-color: var(--asphalt);
-    margin: 1.2em;
-    padding: 1em;
+    background-color: purple;
     max-width: 30em;
     margin-bottom: 1.5em;
+    cursor: pointer;
+}
+
+#back-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'SF Pro';
+    font-size: 0.9em;
+    color: var(--grey-400);
+    margin-top: 0.6em;
+    /* top | right | bottom | left */
+    padding: 1.1em 1em 1em 0.8em;
+}
+#back-btn:hover {
+    color: var(--grey-200);
 }
 
 .search-bar-wrapper {

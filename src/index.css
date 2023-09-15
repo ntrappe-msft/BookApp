@@ -6,7 +6,6 @@
 */
   
 body {
-    /* place-items: center; */
     width: 100%;
     height: 100%;
     min-width: 320px;
@@ -15,8 +14,6 @@ body {
 }
   
 main {
-    /* display: flex;
-    flex-direction: column; */
     width: inherit;
     height: inherit;
     background-color: var(--nearly-black);
@@ -94,10 +91,15 @@ main {
     --grey-500: #797a81;      /* dark grey, for most body text */
     --grey-600: #616368;      /* darker grey */
     --grey-700: #424347;      /* darkest grey */
+
+    --yellow-accent: #ffd644;   /* bright golden yellow */
+    --purple-accent: rgb(87, 56, 163);
   
     --gap-100: 0.15em;          /* tiny gap */
     --gap-200: 0.3em;           /* minor gap */
+    --gap-250: 0.35em;          /* minor gap */
     --gap-300: 1.8em;           /* standard gap size */
+    --gap-400: 2em;             /* standard gap size */
 
     --adventure-1: #bf59b2;   /* text tag */ 
     --adventure-2: #903f85;   /* border tag */

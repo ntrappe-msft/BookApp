@@ -1,3 +1,12 @@
+#inner-book-preview-wrapper {
+    display: flex;
+    flex-direction: row;
+    border-radius: 0.7em;
+    background-color: var(--asphalt);
+    margin: 1.2em;
+    padding: 1em;
+}
+
 #preview-cover-wrapper {
     display: flex;
     flex-direction: column;
@@ -31,7 +40,7 @@
     /* align-self: flex-start; */
 }
 #preview-title-wrapper h2 {
-    margin-bottom: var(--gap-100);
+    margin-bottom: var(--gap-200);
 }
 
 #preview-tags-wrapper {
@@ -53,7 +62,7 @@
 .tag {
     font-family: 'SF Compact';
     font-weight: 500;
-    font-size: 0.6em;
+    font-size: 0.55em;
     border: 0.12em solid;
     border-radius: 0.5em;
     height: fit-content;
@@ -82,31 +91,41 @@
     background-color: var(--bestseller-3);
 }
 
-h2 {
+#preview-content-wrapper h2 {
     font-family: 'SF Pro';
     font-weight: 600;
-    font-size: 1.2em;
+    font-size: 0.9em;
     line-height: 1.1;
+    word-wrap: break-word;
     color: var(--grey-200);
+    color: red;
 }
-h2.med {
-    font-size: 1em;
-}
-h2.long {
+#preview-content-wrapper h2.med {
     font-size: 0.8em;
+    line-height: 1.2;
+    color: orange;
+}
+#preview-content-wrapper h2.long {
+    font-size: 0.7em;
+    line-height: 1.3;
+    color: yellow;
 }
 
-h3 {
+#preview-content-wrapper h3 {
     font-family: 'SF Compact';
     font-weight: 300;
-    font-size: 0.9em;
+    font-size: 0.75em;
     line-height: 1em;
     color: var(--grey-500);
 }
 
-p {
+#preview-content-wrapper p {
     font-family: 'SF Compact';
     font-weight: 300;
-    font-size: 1em;
+    font-size: 0.8em;
     color: var(--grey-500);
+}
+
+#preview-content-wrapper b {
+    color: var(--grey-400)
 }

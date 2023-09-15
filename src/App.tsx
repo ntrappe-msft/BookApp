@@ -25,7 +25,7 @@ function App() {
         <span id="app-content">
             {selectedBook ? ( // If a book is selected, show the Book component
                 <>
-                    <button onClick={() => setSelectedBook(null)}>🔙</button> {/* Back button */}
+                    <button id="back-btn" onClick={() => setSelectedBook(null)}>&#8592; Books</button> {/* Back button */}
                     <span id="book-wrapper">
                     <Book
                         cover={selectedBook.image}

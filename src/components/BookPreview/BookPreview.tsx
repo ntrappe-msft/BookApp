@@ -24,7 +24,7 @@ function BookPreview({
 }: BookPreviewProps) {
 
     return (
-        <div onClick={onClick}>
+        <div id="inner-book-preview-wrapper" onClick={onClick}>
             <div id="preview-cover-wrapper">
                 <img src={cover} alt="Book cover"/>
             </div>
