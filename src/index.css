@@ -14,8 +14,9 @@ body {
 }
   
 main {
-    width: inherit;
+    width: 100%;
     height: inherit;
+    min-height: inherit;
     background-color: var(--nearly-black);
     min-width: 300px;
 }
@@ -23,13 +24,6 @@ main {
 * {
     margin: 0;
     padding: 0;
-}
-
-@media (min-width: 30em) {
-    main {
-        width: 29em;
-        margin: 0 auto;
-    }
 }
   
 /* Custom fonts */
@@ -69,12 +63,19 @@ main {
     src: url('assets/fonts/SF-Pro-Bold.otf') format('opentype');
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+/* dont let the app not be mobile sized */
+/* @media (min-width: 600px) {
+    main {
+        max-width: 600px;
+    }
+} */
+
 :root {
-    /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400; */
-  
-    color-scheme: light dark; /* TODO */
+    color-scheme: dark; /* TODO */
   
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -93,13 +94,14 @@ main {
     --grey-700: #424347;      /* darkest grey */
 
     --yellow-accent: #ffd644;   /* bright golden yellow */
-    --purple-accent: rgb(87, 56, 163);
+    --purple-accent: rgb(83, 66, 167);
   
     --gap-100: 0.15em;          /* tiny gap */
     --gap-200: 0.3em;           /* minor gap */
     --gap-250: 0.35em;          /* minor gap */
     --gap-300: 1.8em;           /* standard gap size */
     --gap-400: 2em;             /* standard gap size */
+    --gap-500: 2.5em;           /* big gap */
 
     --adventure-1: #bf59b2;   /* text tag */ 
     --adventure-2: #903f85;   /* border tag */

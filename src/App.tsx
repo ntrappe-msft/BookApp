@@ -3,13 +3,16 @@ import Book from './components/Book/Book';
 import BookPreview from './components/BookPreview/BookPreview';
 import Yellowface from './assets/Yellowface.png';
 import HarryPotter from './assets/HarryPotter.png';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { IBook } from './models/BookModel';
 
 function App() {
     const [searchTerm, setSearchTerm] = useState("");
     const [books, setBooks] = useState<IBook[]>([]);
     const [selectedBook, setSelectedBook] = useState<IBook | null>(null); // New state to track the selected book
+
+    const windowSize = useRef([window.innerWidth, window.innerHeight]);
+    console.log(`window width ${windowSize.current[0]} and height ${windowSize.current[1]}`);
 
     async function fetchBooks(query: string) {
         try {
@@ -38,7 +41,7 @@ function App() {
                 </>
             ) : (
                 <> {/* Otherwise, show the search bar and book previews */}
-                    <div className="search-bar-wrapper">
+                    <span className="search-bar-wrapper">
                         <input
                             type="text"
                             placeholder="Search for a book..."
@@ -48,7 +51,7 @@ function App() {
                                 fetchBooks(e.target.value);
                             }}
                         />
-                    </div>
+                    </span>
                     
                     {books && books.map((book, index) => (
                         <span id="book-preview-wrapper" key={book.isbn13 || index}>
